@@ -8,7 +8,7 @@ namespace EducationCenter.Models.Models
 {
     public class TeacherAcademicYear
     {
-        public int TeacherID { get; set; }
+        public int TeacherId { get; set; }
         public Teacher Teacher { get; set; }
 
         public int AcademicYearID { get; set; }

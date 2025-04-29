@@ -11,7 +11,7 @@ namespace EducationCenter.Models.Models
     public class Student 
     {
         [Key, ForeignKey("User")]
-        public int StudentId { get; set; }
+        public int StudentID { get; set; }
         [Required]
         public int AcademicYearID { get; set; }
         public AcademicYear AcademicYear { get; set; }

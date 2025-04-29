@@ -17,7 +17,7 @@ namespace EducationCenter.Models.Models
         public Student Student { get; set; }
 
         [Required]
-        public int TeacherID { get; set; }
+        public int TeacherId { get; set; }
         public Teacher Teacher { get; set; }
 
         [Required]

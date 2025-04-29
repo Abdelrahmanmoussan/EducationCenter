@@ -202,7 +202,7 @@ namespace EducationCenter.DataAccess.Migrations
                     b.Property<int>("StudentID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("StudentId")
+                    b.Property<int?>("StudentID1")
                         .HasColumnType("int");
 
                     b.HasKey("AssessmentResultID");
@@ -213,7 +213,7 @@ namespace EducationCenter.DataAccess.Migrations
 
                     b.HasIndex("StudentID");
 
-                    b.HasIndex("StudentId");
+                    b.HasIndex("StudentID1");
 
                     b.ToTable("AssessmentResults");
                 });
@@ -235,6 +235,9 @@ namespace EducationCenter.DataAccess.Migrations
                     b.Property<int>("EnrollmentID")
                         .HasColumnType("int");
 
+                    b.Property<int?>("EnrollmentID1")
+                        .HasColumnType("int");
+
                     b.Property<string>("Notes")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -247,16 +250,18 @@ namespace EducationCenter.DataAccess.Migrations
                     b.Property<int>("StudentID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("StudentId")
+                    b.Property<int?>("StudentID1")
                         .HasColumnType("int");
 
                     b.HasKey("AttendanceID");
 
                     b.HasIndex("EnrollmentID");
 
+                    b.HasIndex("EnrollmentID1");
+
                     b.HasIndex("StudentID");
 
-                    b.HasIndex("StudentId");
+                    b.HasIndex("StudentID1");
 
                     b.ToTable("Attendances");
                 });
@@ -286,10 +291,10 @@ namespace EducationCenter.DataAccess.Migrations
                     b.Property<int>("SubjectID")
                         .HasColumnType("int");
 
-                    b.Property<int>("TeacherID")
+                    b.Property<int>("TeacherId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TeacherId")
+                    b.Property<int?>("TeacherId1")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -300,9 +305,9 @@ namespace EducationCenter.DataAccess.Migrations
 
                     b.HasIndex("SubjectID");
 
-                    b.HasIndex("TeacherID");
-
                     b.HasIndex("TeacherId");
+
+                    b.HasIndex("TeacherId1");
 
                     b.ToTable("ClassGroups");
                 });
@@ -336,7 +341,7 @@ namespace EducationCenter.DataAccess.Migrations
                     b.Property<int>("StudentID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("StudentId")
+                    b.Property<int?>("StudentID1")
                         .HasColumnType("int");
 
                     b.HasKey("EnrollmentID");
@@ -347,7 +352,7 @@ namespace EducationCenter.DataAccess.Migrations
 
                     b.HasIndex("StudentID");
 
-                    b.HasIndex("StudentId");
+                    b.HasIndex("StudentID1");
 
                     b.ToTable("Enrollments");
                 });
@@ -488,24 +493,24 @@ namespace EducationCenter.DataAccess.Migrations
                     b.Property<int>("StudentID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("StudentId")
+                    b.Property<int?>("StudentID1")
                         .HasColumnType("int");
 
-                    b.Property<int>("TeacherID")
+                    b.Property<int>("TeacherId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TeacherId")
+                    b.Property<int?>("TeacherId1")
                         .HasColumnType("int");
 
                     b.HasKey("PaymentID");
 
                     b.HasIndex("StudentID");
 
-                    b.HasIndex("StudentId");
-
-                    b.HasIndex("TeacherID");
+                    b.HasIndex("StudentID1");
 
                     b.HasIndex("TeacherId");
+
+                    b.HasIndex("TeacherId1");
 
                     b.ToTable("Payments");
                 });
@@ -549,35 +554,55 @@ namespace EducationCenter.DataAccess.Migrations
                     b.Property<int>("PrivateLessonID")
                         .HasColumnType("int");
 
+                    b.Property<int?>("PrivateLessonID1")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("StudentID1")
+                        .HasColumnType("int");
+
                     b.HasKey("StudentID", "PrivateLessonID");
 
                     b.HasIndex("PrivateLessonID");
+
+                    b.HasIndex("PrivateLessonID1");
+
+                    b.HasIndex("StudentID1");
 
                     b.ToTable("PrivateLessonStudents");
                 });
 
             modelBuilder.Entity("EducationCenter.Models.Models.PrivateLessonTeacher", b =>
                 {
-                    b.Property<int>("TeacherID")
+                    b.Property<int>("TeacherId")
                         .HasColumnType("int");
 
                     b.Property<int>("PrivateLessonID")
                         .HasColumnType("int");
 
-                    b.HasKey("TeacherID", "PrivateLessonID");
+                    b.Property<int?>("PrivateLessonID1")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TeacherId1")
+                        .HasColumnType("int");
+
+                    b.HasKey("TeacherId", "PrivateLessonID");
 
                     b.HasIndex("PrivateLessonID");
+
+                    b.HasIndex("PrivateLessonID1");
+
+                    b.HasIndex("TeacherId1");
 
                     b.ToTable("PrivateLessonTeachers");
                 });
 
             modelBuilder.Entity("EducationCenter.Models.Models.Student", b =>
                 {
-                    b.Property<int>("StudentId")
+                    b.Property<int>("StudentID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudentId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudentID"));
 
                     b.Property<int>("AcademicYearID")
                         .HasColumnType("int");
@@ -600,7 +625,7 @@ namespace EducationCenter.DataAccess.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("StudentId");
+                    b.HasKey("StudentID");
 
                     b.HasIndex("AcademicYearID");
 
@@ -714,13 +739,13 @@ namespace EducationCenter.DataAccess.Migrations
 
             modelBuilder.Entity("EducationCenter.Models.Models.TeacherAcademicYear", b =>
                 {
-                    b.Property<int>("TeacherID")
+                    b.Property<int>("TeacherId")
                         .HasColumnType("int");
 
                     b.Property<int>("AcademicYearID")
                         .HasColumnType("int");
 
-                    b.HasKey("TeacherID", "AcademicYearID");
+                    b.HasKey("TeacherId", "AcademicYearID");
 
                     b.HasIndex("AcademicYearID");
 
@@ -902,7 +927,7 @@ namespace EducationCenter.DataAccess.Migrations
 
                     b.HasOne("EducationCenter.Models.Models.Student", null)
                         .WithMany("AssessmentResults")
-                        .HasForeignKey("StudentId");
+                        .HasForeignKey("StudentID1");
 
                     b.Navigation("Assessment");
 
@@ -912,20 +937,24 @@ namespace EducationCenter.DataAccess.Migrations
             modelBuilder.Entity("EducationCenter.Models.Models.Attendance", b =>
                 {
                     b.HasOne("EducationCenter.Models.Models.Enrollment", "Enrollment")
-                        .WithMany("Attendances")
+                        .WithMany()
                         .HasForeignKey("EnrollmentID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("EducationCenter.Models.Models.Enrollment", null)
+                        .WithMany("Attendances")
+                        .HasForeignKey("EnrollmentID1");
 
                     b.HasOne("EducationCenter.Models.Models.Student", "Student")
                         .WithMany()
                         .HasForeignKey("StudentID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EducationCenter.Models.Models.Student", null)
                         .WithMany("Attendances")
-                        .HasForeignKey("StudentId");
+                        .HasForeignKey("StudentID1");
 
                     b.Navigation("Enrollment");
 
@@ -942,13 +971,13 @@ namespace EducationCenter.DataAccess.Migrations
 
                     b.HasOne("EducationCenter.Models.Models.Teacher", "Teacher")
                         .WithMany()
-                        .HasForeignKey("TeacherID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("TeacherId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EducationCenter.Models.Models.Teacher", null)
                         .WithMany("ClassGroups")
-                        .HasForeignKey("TeacherId");
+                        .HasForeignKey("TeacherId1");
 
                     b.Navigation("Subject");
 
@@ -975,7 +1004,7 @@ namespace EducationCenter.DataAccess.Migrations
 
                     b.HasOne("EducationCenter.Models.Models.Student", null)
                         .WithMany("Enrollments")
-                        .HasForeignKey("StudentId");
+                        .HasForeignKey("StudentID1");
 
                     b.Navigation("ClassGroup");
 
@@ -1021,7 +1050,7 @@ namespace EducationCenter.DataAccess.Migrations
                     b.HasOne("EducationCenter.Models.Models.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("User");
@@ -1037,17 +1066,17 @@ namespace EducationCenter.DataAccess.Migrations
 
                     b.HasOne("EducationCenter.Models.Models.Student", null)
                         .WithMany("Payments")
-                        .HasForeignKey("StudentId");
+                        .HasForeignKey("StudentID1");
 
                     b.HasOne("EducationCenter.Models.Models.Teacher", "Teacher")
                         .WithMany()
-                        .HasForeignKey("TeacherID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("TeacherId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EducationCenter.Models.Models.Teacher", null)
                         .WithMany("Payments")
-                        .HasForeignKey("TeacherId");
+                        .HasForeignKey("TeacherId1");
 
                     b.Navigation("Student");
 
@@ -1068,16 +1097,24 @@ namespace EducationCenter.DataAccess.Migrations
             modelBuilder.Entity("EducationCenter.Models.Models.PrivateLessonStudent", b =>
                 {
                     b.HasOne("EducationCenter.Models.Models.PrivateLesson", "PrivateLesson")
-                        .WithMany("Students")
+                        .WithMany()
                         .HasForeignKey("PrivateLessonID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("EducationCenter.Models.Models.PrivateLesson", null)
+                        .WithMany("Students")
+                        .HasForeignKey("PrivateLessonID1");
+
                     b.HasOne("EducationCenter.Models.Models.Student", "Student")
-                        .WithMany("PrivateLessons")
+                        .WithMany()
                         .HasForeignKey("StudentID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("EducationCenter.Models.Models.Student", null)
+                        .WithMany("PrivateLessons")
+                        .HasForeignKey("StudentID1");
 
                     b.Navigation("PrivateLesson");
 
@@ -1087,16 +1124,24 @@ namespace EducationCenter.DataAccess.Migrations
             modelBuilder.Entity("EducationCenter.Models.Models.PrivateLessonTeacher", b =>
                 {
                     b.HasOne("EducationCenter.Models.Models.PrivateLesson", "PrivateLesson")
-                        .WithMany("Teachers")
+                        .WithMany()
                         .HasForeignKey("PrivateLessonID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("EducationCenter.Models.Models.PrivateLesson", null)
+                        .WithMany("Teachers")
+                        .HasForeignKey("PrivateLessonID1");
+
                     b.HasOne("EducationCenter.Models.Models.Teacher", "Teacher")
-                        .WithMany("PrivateLessons")
-                        .HasForeignKey("TeacherID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .WithMany()
+                        .HasForeignKey("TeacherId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("EducationCenter.Models.Models.Teacher", null)
+                        .WithMany("PrivateLessons")
+                        .HasForeignKey("TeacherId1");
 
                     b.Navigation("PrivateLesson");
 
@@ -1172,13 +1217,13 @@ namespace EducationCenter.DataAccess.Migrations
                     b.HasOne("EducationCenter.Models.Models.AcademicYear", "AcademicYear")
                         .WithMany("TeacherAcademicYears")
                         .HasForeignKey("AcademicYearID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EducationCenter.Models.Models.Teacher", "Teacher")
                         .WithMany()
-                        .HasForeignKey("TeacherID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("TeacherId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("AcademicYear");

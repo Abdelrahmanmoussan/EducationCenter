@@ -11,7 +11,7 @@ namespace EducationCenter.Models.Models
         public int PrivateLessonID { get; set; }
         public PrivateLesson PrivateLesson { get; set; }
 
-        public int TeacherID { get; set; }
+        public int TeacherId { get; set; }
         public Teacher Teacher { get; set; }
     }
 

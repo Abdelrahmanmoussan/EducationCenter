@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,8 +27,12 @@ namespace EducationCenter.Models.Models
         public int SubjectID { get; set; }
         public Subject Subject { get; set; }
 
-        public int TeacherID { get; set; }
+        public int TeacherId { get; set; }
         public Teacher Teacher { get; set; }
+
+        //[ForeignKey("TeacherID")]
+        //public Teacher Teacher { get; set; }
+
 
         public ICollection<Enrollment> Enrollments { get; set; }
     }

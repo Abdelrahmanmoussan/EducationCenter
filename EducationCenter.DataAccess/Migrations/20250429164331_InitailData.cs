@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace EducationCenter.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class InitalDb : Migration
+    public partial class InitailData : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -55,7 +55,7 @@ namespace EducationCenter.DataAccess.Migrations
                 name: "Students",
                 columns: table => new
                 {
-                    StudentId = table.Column<int>(type: "int", nullable: false)
+                    StudentID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AcademicYearID = table.Column<int>(type: "int", nullable: false),
                     ParentName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
@@ -65,7 +65,7 @@ namespace EducationCenter.DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Students", x => x.StudentId);
+                    table.PrimaryKey("PK_Students", x => x.StudentID);
                     table.ForeignKey(
                         name: "FK_Students_AcademicYears_AcademicYearID",
                         column: x => x.AcademicYearID,
@@ -196,7 +196,7 @@ namespace EducationCenter.DataAccess.Migrations
                         name: "FK_Subscriptions_Students_StudentID",
                         column: x => x.StudentID,
                         principalTable: "Students",
-                        principalColumn: "StudentId",
+                        principalColumn: "StudentID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -205,7 +205,9 @@ namespace EducationCenter.DataAccess.Migrations
                 columns: table => new
                 {
                     PrivateLessonID = table.Column<int>(type: "int", nullable: false),
-                    StudentID = table.Column<int>(type: "int", nullable: false)
+                    StudentID = table.Column<int>(type: "int", nullable: false),
+                    PrivateLessonID1 = table.Column<int>(type: "int", nullable: true),
+                    StudentID1 = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -215,13 +217,23 @@ namespace EducationCenter.DataAccess.Migrations
                         column: x => x.PrivateLessonID,
                         principalTable: "PrivateLessons",
                         principalColumn: "PrivateLessonID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_PrivateLessonStudents_PrivateLessons_PrivateLessonID1",
+                        column: x => x.PrivateLessonID1,
+                        principalTable: "PrivateLessons",
+                        principalColumn: "PrivateLessonID");
                     table.ForeignKey(
                         name: "FK_PrivateLessonStudents_Students_StudentID",
                         column: x => x.StudentID,
                         principalTable: "Students",
-                        principalColumn: "StudentId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "StudentID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_PrivateLessonStudents_Students_StudentID1",
+                        column: x => x.StudentID1,
+                        principalTable: "Students",
+                        principalColumn: "StudentID");
                 });
 
             migrationBuilder.CreateTable(
@@ -236,8 +248,8 @@ namespace EducationCenter.DataAccess.Migrations
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     SubjectID = table.Column<int>(type: "int", nullable: false),
-                    TeacherID = table.Column<int>(type: "int", nullable: false),
-                    TeacherId = table.Column<int>(type: "int", nullable: true)
+                    TeacherId = table.Column<int>(type: "int", nullable: false),
+                    TeacherId1 = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -249,14 +261,14 @@ namespace EducationCenter.DataAccess.Migrations
                         principalColumn: "SubjectID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ClassGroups_Teachers_TeacherID",
-                        column: x => x.TeacherID,
-                        principalTable: "Teachers",
-                        principalColumn: "TeacherId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_ClassGroups_Teachers_TeacherId",
                         column: x => x.TeacherId,
+                        principalTable: "Teachers",
+                        principalColumn: "TeacherId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ClassGroups_Teachers_TeacherId1",
+                        column: x => x.TeacherId1,
                         principalTable: "Teachers",
                         principalColumn: "TeacherId");
                 });
@@ -268,7 +280,7 @@ namespace EducationCenter.DataAccess.Migrations
                     PaymentID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     StudentID = table.Column<int>(type: "int", nullable: false),
-                    TeacherID = table.Column<int>(type: "int", nullable: false),
+                    TeacherId = table.Column<int>(type: "int", nullable: false),
                     Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     PaymentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PaymentMethod = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
@@ -276,8 +288,8 @@ namespace EducationCenter.DataAccess.Migrations
                     PlatformPercentage = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     NetAmountForTeacher = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     PaymentStatus = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    StudentId = table.Column<int>(type: "int", nullable: true),
-                    TeacherId = table.Column<int>(type: "int", nullable: true)
+                    StudentID1 = table.Column<int>(type: "int", nullable: true),
+                    TeacherId1 = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -286,22 +298,22 @@ namespace EducationCenter.DataAccess.Migrations
                         name: "FK_Payments_Students_StudentID",
                         column: x => x.StudentID,
                         principalTable: "Students",
-                        principalColumn: "StudentId",
+                        principalColumn: "StudentID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Payments_Students_StudentId",
-                        column: x => x.StudentId,
+                        name: "FK_Payments_Students_StudentID1",
+                        column: x => x.StudentID1,
                         principalTable: "Students",
-                        principalColumn: "StudentId");
-                    table.ForeignKey(
-                        name: "FK_Payments_Teachers_TeacherID",
-                        column: x => x.TeacherID,
-                        principalTable: "Teachers",
-                        principalColumn: "TeacherId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "StudentID");
                     table.ForeignKey(
                         name: "FK_Payments_Teachers_TeacherId",
                         column: x => x.TeacherId,
+                        principalTable: "Teachers",
+                        principalColumn: "TeacherId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Payments_Teachers_TeacherId1",
+                        column: x => x.TeacherId1,
                         principalTable: "Teachers",
                         principalColumn: "TeacherId");
                 });
@@ -311,47 +323,59 @@ namespace EducationCenter.DataAccess.Migrations
                 columns: table => new
                 {
                     PrivateLessonID = table.Column<int>(type: "int", nullable: false),
-                    TeacherID = table.Column<int>(type: "int", nullable: false)
+                    TeacherId = table.Column<int>(type: "int", nullable: false),
+                    PrivateLessonID1 = table.Column<int>(type: "int", nullable: true),
+                    TeacherId1 = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PrivateLessonTeachers", x => new { x.TeacherID, x.PrivateLessonID });
+                    table.PrimaryKey("PK_PrivateLessonTeachers", x => new { x.TeacherId, x.PrivateLessonID });
                     table.ForeignKey(
                         name: "FK_PrivateLessonTeachers_PrivateLessons_PrivateLessonID",
                         column: x => x.PrivateLessonID,
                         principalTable: "PrivateLessons",
                         principalColumn: "PrivateLessonID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_PrivateLessonTeachers_Teachers_TeacherID",
-                        column: x => x.TeacherID,
+                        name: "FK_PrivateLessonTeachers_PrivateLessons_PrivateLessonID1",
+                        column: x => x.PrivateLessonID1,
+                        principalTable: "PrivateLessons",
+                        principalColumn: "PrivateLessonID");
+                    table.ForeignKey(
+                        name: "FK_PrivateLessonTeachers_Teachers_TeacherId",
+                        column: x => x.TeacherId,
                         principalTable: "Teachers",
                         principalColumn: "TeacherId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_PrivateLessonTeachers_Teachers_TeacherId1",
+                        column: x => x.TeacherId1,
+                        principalTable: "Teachers",
+                        principalColumn: "TeacherId");
                 });
 
             migrationBuilder.CreateTable(
                 name: "TeacherAcademicYears",
                 columns: table => new
                 {
-                    TeacherID = table.Column<int>(type: "int", nullable: false),
+                    TeacherId = table.Column<int>(type: "int", nullable: false),
                     AcademicYearID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TeacherAcademicYears", x => new { x.TeacherID, x.AcademicYearID });
+                    table.PrimaryKey("PK_TeacherAcademicYears", x => new { x.TeacherId, x.AcademicYearID });
                     table.ForeignKey(
                         name: "FK_TeacherAcademicYears_AcademicYears_AcademicYearID",
                         column: x => x.AcademicYearID,
                         principalTable: "AcademicYears",
                         principalColumn: "AcademicYearID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_TeacherAcademicYears_Teachers_TeacherID",
-                        column: x => x.TeacherID,
+                        name: "FK_TeacherAcademicYears_Teachers_TeacherId",
+                        column: x => x.TeacherId,
                         principalTable: "Teachers",
                         principalColumn: "TeacherId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -391,7 +415,7 @@ namespace EducationCenter.DataAccess.Migrations
                     EnrollmentStatus = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Notes = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ClassGroupID1 = table.Column<int>(type: "int", nullable: true),
-                    StudentId = table.Column<int>(type: "int", nullable: true)
+                    StudentID1 = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -411,13 +435,13 @@ namespace EducationCenter.DataAccess.Migrations
                         name: "FK_Enrollments_Students_StudentID",
                         column: x => x.StudentID,
                         principalTable: "Students",
-                        principalColumn: "StudentId",
+                        principalColumn: "StudentID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Enrollments_Students_StudentId",
-                        column: x => x.StudentId,
+                        name: "FK_Enrollments_Students_StudentID1",
+                        column: x => x.StudentID1,
                         principalTable: "Students",
-                        principalColumn: "StudentId");
+                        principalColumn: "StudentID");
                 });
 
             migrationBuilder.CreateTable(
@@ -431,7 +455,7 @@ namespace EducationCenter.DataAccess.Migrations
                     Score = table.Column<int>(type: "int", nullable: false),
                     Feedback = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AssessmentID1 = table.Column<int>(type: "int", nullable: true),
-                    StudentId = table.Column<int>(type: "int", nullable: true)
+                    StudentID1 = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -451,13 +475,13 @@ namespace EducationCenter.DataAccess.Migrations
                         name: "FK_AssessmentResults_Students_StudentID",
                         column: x => x.StudentID,
                         principalTable: "Students",
-                        principalColumn: "StudentId",
+                        principalColumn: "StudentID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_AssessmentResults_Students_StudentId",
-                        column: x => x.StudentId,
+                        name: "FK_AssessmentResults_Students_StudentID1",
+                        column: x => x.StudentID1,
                         principalTable: "Students",
-                        principalColumn: "StudentId");
+                        principalColumn: "StudentID");
                 });
 
             migrationBuilder.CreateTable(
@@ -472,7 +496,8 @@ namespace EducationCenter.DataAccess.Migrations
                     Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Notes = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     StudentID = table.Column<int>(type: "int", nullable: false),
-                    StudentId = table.Column<int>(type: "int", nullable: true)
+                    EnrollmentID1 = table.Column<int>(type: "int", nullable: true),
+                    StudentID1 = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -482,18 +507,23 @@ namespace EducationCenter.DataAccess.Migrations
                         column: x => x.EnrollmentID,
                         principalTable: "Enrollments",
                         principalColumn: "EnrollmentID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Attendances_Enrollments_EnrollmentID1",
+                        column: x => x.EnrollmentID1,
+                        principalTable: "Enrollments",
+                        principalColumn: "EnrollmentID");
                     table.ForeignKey(
                         name: "FK_Attendances_Students_StudentID",
                         column: x => x.StudentID,
                         principalTable: "Students",
-                        principalColumn: "StudentId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "StudentID",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Attendances_Students_StudentId",
-                        column: x => x.StudentId,
+                        name: "FK_Attendances_Students_StudentID1",
+                        column: x => x.StudentID1,
                         principalTable: "Students",
-                        principalColumn: "StudentId");
+                        principalColumn: "StudentID");
                 });
 
             migrationBuilder.CreateTable(
@@ -650,7 +680,7 @@ namespace EducationCenter.DataAccess.Migrations
                         column: x => x.UserID,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -730,14 +760,14 @@ namespace EducationCenter.DataAccess.Migrations
                 column: "AssessmentID1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AssessmentResults_StudentId",
-                table: "AssessmentResults",
-                column: "StudentId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_AssessmentResults_StudentID",
                 table: "AssessmentResults",
                 column: "StudentID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AssessmentResults_StudentID1",
+                table: "AssessmentResults",
+                column: "StudentID1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Assessments_ClassGroupID",
@@ -750,14 +780,19 @@ namespace EducationCenter.DataAccess.Migrations
                 column: "EnrollmentID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Attendances_StudentId",
+                name: "IX_Attendances_EnrollmentID1",
                 table: "Attendances",
-                column: "StudentId");
+                column: "EnrollmentID1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Attendances_StudentID",
                 table: "Attendances",
                 column: "StudentID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Attendances_StudentID1",
+                table: "Attendances",
+                column: "StudentID1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ClassGroups_SubjectID",
@@ -770,9 +805,9 @@ namespace EducationCenter.DataAccess.Migrations
                 column: "TeacherId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ClassGroups_TeacherID",
+                name: "IX_ClassGroups_TeacherId1",
                 table: "ClassGroups",
-                column: "TeacherID");
+                column: "TeacherId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Enrollments_ClassGroupID",
@@ -785,14 +820,14 @@ namespace EducationCenter.DataAccess.Migrations
                 column: "ClassGroupID1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Enrollments_StudentId",
-                table: "Enrollments",
-                column: "StudentId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Enrollments_StudentID",
                 table: "Enrollments",
                 column: "StudentID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Enrollments_StudentID1",
+                table: "Enrollments",
+                column: "StudentID1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Lectures_AssessmentID",
@@ -820,14 +855,14 @@ namespace EducationCenter.DataAccess.Migrations
                 column: "NotificationRecipientID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Payments_StudentId",
-                table: "Payments",
-                column: "StudentId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Payments_StudentID",
                 table: "Payments",
                 column: "StudentID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Payments_StudentID1",
+                table: "Payments",
+                column: "StudentID1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Payments_TeacherId",
@@ -835,9 +870,9 @@ namespace EducationCenter.DataAccess.Migrations
                 column: "TeacherId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Payments_TeacherID",
+                name: "IX_Payments_TeacherId1",
                 table: "Payments",
-                column: "TeacherID");
+                column: "TeacherId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PrivateLessons_SubjectID",
@@ -850,9 +885,29 @@ namespace EducationCenter.DataAccess.Migrations
                 column: "PrivateLessonID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_PrivateLessonStudents_PrivateLessonID1",
+                table: "PrivateLessonStudents",
+                column: "PrivateLessonID1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PrivateLessonStudents_StudentID1",
+                table: "PrivateLessonStudents",
+                column: "StudentID1");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_PrivateLessonTeachers_PrivateLessonID",
                 table: "PrivateLessonTeachers",
                 column: "PrivateLessonID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PrivateLessonTeachers_PrivateLessonID1",
+                table: "PrivateLessonTeachers",
+                column: "PrivateLessonID1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PrivateLessonTeachers_TeacherId1",
+                table: "PrivateLessonTeachers",
+                column: "TeacherId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Students_AcademicYearID",
