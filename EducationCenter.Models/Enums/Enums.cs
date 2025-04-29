@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EducationCenter.DataAccess.Data.Enums
+namespace EducationCenter.Models.Enums
 {
     public enum RoleStatus
     {

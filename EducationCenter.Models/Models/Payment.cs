@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EducationCenter.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace EducationCenter.Models.Models
         public DateTime PaymentDate { get; set; }
 
         [MaxLength(20)]
-        public string PaymentMethod { get; set; } // مثلا: Cash, Visa
+        public PaymentMethod PaymentMethod { get; set; } // مثلا: Cash, Visa
 
         public string Notes { get; set; }
 
@@ -34,7 +35,7 @@ namespace EducationCenter.Models.Models
         public decimal NetAmountForTeacher { get; set; }
 
         [MaxLength(20)]
-        public string PaymentStatus { get; set; } // مثلا: Paid, Pending
+        public PaymentStatus PaymentStatus { get; set; } // مثلا: Paid, Pending
     }
 
 }

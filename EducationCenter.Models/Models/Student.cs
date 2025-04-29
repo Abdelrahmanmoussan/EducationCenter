@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EducationCenter.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -30,7 +31,7 @@ namespace EducationCenter.Models.Models
 
         [Required]
         [MaxLength(50)]
-        public string ParentStatus { get; set; }
+        public ParentStatus ParentStatus { get; set; }
 
         public ICollection<PrivateLessonStudent> PrivateLessons { get; set; }
         public ICollection<Enrollment> Enrollments { get; set; }

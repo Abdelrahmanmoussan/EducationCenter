@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿
+using EducationCenter.Models.Enums;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -31,7 +33,7 @@ namespace EducationCenter.Models.Models
 
         [Required]
         [MaxLength(20)]
-        public string RoleStatus { get; set; } // "Student" or "Teacher"
+        public RoleStatus RoleStatus { get; set; } // "Student" or "Teacher"
         public NotificationRecipient NotificationRecipient { get; set; }
     }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EducationCenter.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace EducationCenter.Models.Models
 
         [Required]
         [MaxLength(20)]
-        public string SubscriptionStatus { get; set; } // مثلا: Active, Expired
+        public SubscriptionStatus SubscriptionStatus { get; set; } // مثلا: Active, Expired
 
         [Required]
         public int StudentID { get; set; }

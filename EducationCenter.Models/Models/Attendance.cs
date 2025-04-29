@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EducationCenter.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace EducationCenter.Models.Models
 
         [Required]
         [MaxLength(20)]
-        public string Status { get; set; } // مثلا: Present, Absent, Late
+        public AttendanceStatus AttendanceStatus { get; set; } // مثلا: Present, Absent, Late
 
         public string Notes { get; set; }
         public int StudentID { get; set; }

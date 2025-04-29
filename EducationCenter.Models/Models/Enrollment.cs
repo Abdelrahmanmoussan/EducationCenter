@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EducationCenter.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace EducationCenter.Models.Models
 
         [Required]
         [MaxLength(20)]
-        public string EnrollmentStatus { get; set; } // مثلا: Active, Cancelled
+        public EnrollmentStatus EnrollmentStatus { get; set; } // مثلا: Active, Cancelled
 
         public string Notes { get; set; }
 
