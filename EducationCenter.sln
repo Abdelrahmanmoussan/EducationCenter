@@ -5,6 +5,10 @@ VisualStudioVersion = 17.12.35506.116 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EducationCenter", "EducationCenter\EducationCenter.csproj", "{36D7CB8C-62E6-47AA-8805-352818D8036E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EducationCenter.Models", "EducationCenter.Models\EducationCenter.Models.csproj", "{CF020281-27BC-4BDD-A288-C058001641F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EducationCenter.DataAccess", "EducationCenter.DataAccess\EducationCenter.DataAccess.csproj", "{AC9090D1-CB4D-41E7-B9FD-EF9D44B35181}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{36D7CB8C-62E6-47AA-8805-352818D8036E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36D7CB8C-62E6-47AA-8805-352818D8036E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36D7CB8C-62E6-47AA-8805-352818D8036E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF020281-27BC-4BDD-A288-C058001641F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF020281-27BC-4BDD-A288-C058001641F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF020281-27BC-4BDD-A288-C058001641F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF020281-27BC-4BDD-A288-C058001641F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC9090D1-CB4D-41E7-B9FD-EF9D44B35181}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC9090D1-CB4D-41E7-B9FD-EF9D44B35181}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC9090D1-CB4D-41E7-B9FD-EF9D44B35181}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC9090D1-CB4D-41E7-B9FD-EF9D44B35181}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
