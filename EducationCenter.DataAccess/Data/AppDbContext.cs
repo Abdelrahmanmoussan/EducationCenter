@@ -196,11 +196,11 @@ namespace EducationCenter.DataAccess.Data
                 .HasForeignKey(ar => ar.StudentID);
 
             // NotificationRecipient -> User
-            modelBuilder.Entity<NotificationRecipient>()
-                .HasOne(nr => nr.User)
-                .WithMany()
-                .HasForeignKey(nr => nr.UserID)
-                .OnDelete(DeleteBehavior.Restrict); // or .NoAction
+            //modelBuilder.Entity<NotificationRecipient>()
+            //    .HasOne(nr => nr.User)
+            //    .WithMany()
+            //    .HasForeignKey(nr => nr.UserID)
+            //    .OnDelete(DeleteBehavior.Restrict); // or .NoAction
 
 
             // Lecture -> ClassGroup & Assessment & Attendance

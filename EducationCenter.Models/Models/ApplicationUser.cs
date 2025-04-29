@@ -10,8 +10,8 @@ namespace EducationCenter.Models.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        [Key]
-        public int UserID { get; set; }
+        //[Key]
+        //public int UserID { get; set; }
 
         [Required]
         [MaxLength(50)]

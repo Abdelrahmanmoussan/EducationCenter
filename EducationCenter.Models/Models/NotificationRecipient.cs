@@ -13,8 +13,8 @@ namespace EducationCenter.Models.Models
         public int NotificationRecipientID { get; set; }
 
         [Required]
-        public string UserID { get; set; }
-        public ApplicationUser User { get; set; }
+        //public string UserID { get; set; }
+        //public ApplicationUser User { get; set; }
 
         public bool DeliveryByGmail { get; set; }
         public bool IsDelivered { get; set; }
