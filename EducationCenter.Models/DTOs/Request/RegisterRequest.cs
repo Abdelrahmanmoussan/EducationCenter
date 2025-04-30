@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EducationCenter.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -38,5 +39,9 @@ namespace EducationCenter.Models.DTOs.Request
         public string? City { get; set; }
 
         public string? Image { get; set; }
+
+        [Required]
+        [MaxLength(20)]
+        public RoleStatus RoleStatus { get; set; } // "Student" or "Teacher"
     }
 }
