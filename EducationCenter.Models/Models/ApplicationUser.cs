@@ -33,6 +33,9 @@ namespace EducationCenter.Models.Models
 
         [Required]    
         public RoleStatus RoleStatus { get; set; } // "Student" or "Teacher"
+
+        public Student Student { get; set; }
+
         public NotificationRecipient NotificationRecipient { get; set; }
     }
 

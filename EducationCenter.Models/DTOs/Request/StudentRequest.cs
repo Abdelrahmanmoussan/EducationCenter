@@ -11,9 +11,9 @@ namespace EducationCenter.Models.DTOs.Request
 {
     public class StudentRequest
     {
-        [Required]
-        public int AcademicYearID { get; set; }
-        public AcademicYear AcademicYear { get; set; }
+        //[Required]
+        //public int AcademicYearID { get; set; }
+        //public AcademicYear? AcademicYear { get; set; }
 
         [Required]
         [MaxLength(100)]

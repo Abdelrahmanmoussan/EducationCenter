@@ -1,5 +1,7 @@
 
 using EducationCenter.DataAccess.Data;
+using EducationCenter.DataAccess.Repository.IRepository;
+using EducationCenter.DataAccess.Repository;
 using EducationCenter.Models.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -31,6 +33,7 @@ namespace EducationCenter
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
 
+            builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 
             var app = builder.Build();
 

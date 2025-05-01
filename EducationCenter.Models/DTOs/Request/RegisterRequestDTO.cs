@@ -45,6 +45,9 @@ namespace EducationCenter.Models.DTOs.Request
         public RoleStatus RoleStatus { get; set; } // "Student" or "Teacher"
         [Required]
         [MaxLength(100)]
+
+        //public int AcademicYearID { get; set; }
+        //public AcademicYear AcademicYear { get; set; }
         public string ParentName { get; set; }
 
         [Required]

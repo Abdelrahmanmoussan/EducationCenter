@@ -26,7 +26,8 @@ namespace EducationCenter.Models.Models
         public int SubjectID { get; set; }
         public Subject Subject { get; set; }
 
-        public ICollection<PrivateLessonTeacher> Teachers { get; set; }
+        public ICollection<PrivateLessonTeacher> PrivateLessonTeachers { get; set; }
+        public ICollection<PrivateLessonStudent> PrivateLessonStudents { get; set; }
         public ICollection<PrivateLessonStudent> Students { get; set; }
     }
 

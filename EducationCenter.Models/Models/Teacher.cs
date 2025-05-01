@@ -30,7 +30,8 @@ namespace EducationCenter.Models.Models
         public int AcademicYearID { get; set; }
         public AcademicYear AcademicYear { get; set; }
 
-        public ICollection<PrivateLessonTeacher> PrivateLessons { get; set; }
+        public ICollection<PrivateLessonTeacher> PrivateLessonTeachers { get; set; }
+        public ICollection<TeacherAcademicYear> TeacherAcademicYears { get; set; }
         public ICollection<ClassGroup> ClassGroups { get; set; }
         public ICollection<Payment> Payments { get; set; }
     }

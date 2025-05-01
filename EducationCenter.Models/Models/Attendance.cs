@@ -26,8 +26,10 @@ namespace EducationCenter.Models.Models
         public AttendanceStatus AttendanceStatus { get; set; } // مثلا: Present, Absent, Late
 
         public string Notes { get; set; }
-        public int StudentID { get; set; }
+        public int Id { get; set; }
         public Student Student { get; set; }
+
+        public ICollection<Lecture> Lectures { get; set; }
     }
 
 }

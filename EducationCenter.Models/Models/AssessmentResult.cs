@@ -17,7 +17,7 @@ namespace EducationCenter.Models.Models
         public Assessment Assessment { get; set; }
 
         [Required]
-        public int StudentID { get; set; }
+        public int Id { get; set; }
         public Student Student { get; set; }
 
         [Required]

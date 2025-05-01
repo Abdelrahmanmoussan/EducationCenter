@@ -17,6 +17,7 @@ namespace EducationCenter.Models.Models
         public string Name { get; set; }
 
         public ICollection<Student> Students { get; set; }
+        public ICollection<Teacher> Teachers { get; set; }
         public ICollection<TeacherAcademicYear> TeacherAcademicYears { get; set; }
         public ICollection<SubjectAcademicYear> SubjectAcademicYears { get; set; }
     }

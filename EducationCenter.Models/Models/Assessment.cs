@@ -31,6 +31,7 @@ namespace EducationCenter.Models.Models
         public ClassGroup ClassGroup { get; set; }
 
         public ICollection<AssessmentResult> AssessmentResults { get; set; }
+        public ICollection<Lecture> Lectures { get; set; }
     }
 
 }

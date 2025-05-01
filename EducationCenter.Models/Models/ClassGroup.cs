@@ -35,6 +35,7 @@ namespace EducationCenter.Models.Models
 
 
         public ICollection<Enrollment> Enrollments { get; set; }
+        public ICollection<Lecture> Lectures { get; set; }
     }
 
 }

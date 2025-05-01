@@ -14,7 +14,7 @@ namespace EducationCenter.Models.Models
         public int EnrollmentID { get; set; }
 
         //[Required]
-        public int StudentID { get; set; }
+        public int Id { get; set; }
         public Student Student { get; set; }
 
         //[Required]

@@ -1,4 +1,7 @@
-﻿using EducationCenter.Models.DTOs.Request;
+﻿using EducationCenter.DataAccess.Repository;
+using EducationCenter.DataAccess.Repository.IRepository;
+using EducationCenter.Models.DTOs.Request;
+using EducationCenter.Models.DTOs.Response;
 using EducationCenter.Models.Models;
 using Mapster;
 using Microsoft.AspNetCore.Http;
@@ -7,6 +10,8 @@ using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.IdentityModel.Tokens;
+ using EducationCenter.Models.DTOs.Response;
+using EducationCenter.Models.Enums;
 
 namespace EducationCenter.Areas.Account
 {
@@ -17,51 +22,72 @@ namespace EducationCenter.Areas.Account
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IStudentRepository _studentRepository;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager, IStudentRepository studentRepository)
         {
             this._userManager = userManager;
             this._signInManager = signInManager;
             this._roleManager = roleManager;
+            this._studentRepository = studentRepository;
         }
 
 
-        [HttpPost("Register")]
-        public async Task<IActionResult> Register([FromBody] RegisterRequestDTO registerRequest)
+
+
+[HttpPost("Register")]
+    public async Task<IActionResult> Register([FromBody] RegisterRequestDTO registerRequest)
+    {
+        var applicationUser = registerRequest.Adapt<ApplicationUser>();
+
+        applicationUser.NotificationRecipient = new NotificationRecipient
         {
-            ApplicationUser applicationUser = registerRequest.Adapt<ApplicationUser>();
-            applicationUser.NotificationRecipient = new NotificationRecipient
-            {
-                DeliveryByGmail = false, // Default value, adjust as needed
-                IsDelivered = false      // Default value, adjust as needed
-            };
+            DeliveryByGmail = false,
+            IsDelivered = false
+        };
 
-            var result = await _userManager.CreateAsync(applicationUser, registerRequest.Password);
+        var result = await _userManager.CreateAsync(applicationUser, registerRequest.Password);
 
-            if (result.Succeeded)
-            {
-               
-                await _signInManager.SignInAsync(applicationUser, false);
+        if (!result.Succeeded)
+            return BadRequest(result.Errors);
 
-                if (_roleManager.Roles.IsNullOrEmpty())
-                {
-                    await _roleManager.CreateAsync(new IdentityRole("Admin"));
-                    await _roleManager.CreateAsync(new IdentityRole("Assistant"));
-                    await _roleManager.CreateAsync(new IdentityRole("Teacher"));
-                    await _roleManager.CreateAsync(new IdentityRole("Student"));
-                }
-                await _userManager.AddToRoleAsync(applicationUser, "Student");
+        await _signInManager.SignInAsync(applicationUser, false);
 
-                return Created();
-            }
-            else
-            {
-                return BadRequest(result.Errors);
-            }
+        if (!_roleManager.Roles.Any())
+        {
+            await _roleManager.CreateAsync(new IdentityRole("Admin"));
+            await _roleManager.CreateAsync(new IdentityRole("Assistant"));
+            await _roleManager.CreateAsync(new IdentityRole("Teacher"));
+            await _roleManager.CreateAsync(new IdentityRole("Student"));
         }
 
+        await _userManager.AddToRoleAsync(applicationUser, "Student");
 
-        [HttpPost("login")]
+        var studentRequest = registerRequest.Adapt<StudentRequest>();
+        await _studentRepository.CreateStudentAsync(studentRequest, applicationUser.Id);
+
+        var student = await _studentRepository.GetStudentWithUserAsync(applicationUser.Id);
+
+        var response = new StudentRegisterResponseDTO
+        {
+            Message = "تم التسجيل بنجاح",
+            StudentFullName = $"{student.ApplicationUser.FirstName} {student.ApplicationUser.LastName}",
+            StudentId = student.Id,
+            UserId = student.ApplicationUser.Id,
+            Role = "Student",
+            //AcademicYearID = student.AcademicYearID,
+        };
+
+        return Created(string.Empty, response);
+    }
+
+
+
+
+
+
+
+    [HttpPost("login")]
         public async Task<IActionResult> Login(LoginRequestDTO loginRequest)
         {
             var appUser = await _userManager.FindByEmailAsync(loginRequest.Email);

@@ -27,7 +27,7 @@ namespace EducationCenter.Models.Models
         public SubscriptionStatus SubscriptionStatus { get; set; } // مثلا: Active, Expired
 
         [Required]
-        public int StudentID { get; set; }
+        public int Id { get; set; }
         public Student Student { get; set; }
     }
 
