@@ -3,6 +3,7 @@ using EducationCenter.DataAccess.Data;
 using EducationCenter.Models.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Scalar.AspNetCore;
 using System;
 
 namespace EducationCenter
@@ -37,6 +38,7 @@ namespace EducationCenter
             if (app.Environment.IsDevelopment())
             {
                 app.MapOpenApi();
+                app.MapScalarApiReference();
             }
 
             app.UseHttpsRedirection();
