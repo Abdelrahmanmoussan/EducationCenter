@@ -23,7 +23,6 @@ namespace EducationCenter.Models.Models
 
 
         [Required]
-        [MaxLength(20)]
         public AttendanceStatus AttendanceStatus { get; set; } // مثلا: Present, Absent, Late
 
         public string Notes { get; set; }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace EducationCenter.Models.DTOs.Request
 {
-    internal class StudentRequest
+    public class StudentRequest
     {
         [Required]
         public int AcademicYearID { get; set; }

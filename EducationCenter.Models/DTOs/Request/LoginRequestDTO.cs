@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EducationCenter.Models.DTOs.Request
 {
-    internal class LoginRequest
+    public class LoginRequestDTO
     {
         [Required]
         [DataType(DataType.EmailAddress)]
@@ -15,5 +15,6 @@ namespace EducationCenter.Models.DTOs.Request
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+        public bool RememberMe { get; set; }
     }
 }

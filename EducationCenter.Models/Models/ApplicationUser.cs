@@ -31,8 +31,7 @@ namespace EducationCenter.Models.Models
 
         public string? Image { get; set; }
 
-        [Required]
-        [MaxLength(20)]
+        [Required]    
         public RoleStatus RoleStatus { get; set; } // "Student" or "Teacher"
         public NotificationRecipient NotificationRecipient { get; set; }
     }

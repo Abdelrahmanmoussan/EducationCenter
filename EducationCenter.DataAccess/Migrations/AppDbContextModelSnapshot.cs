@@ -37,7 +37,7 @@ namespace EducationCenter.DataAccess.Migrations
 
                     b.HasKey("AcademicYearID");
 
-                    b.ToTable("AcademicYears");
+                    b.ToTable("AcademicYears", (string)null);
                 });
 
             modelBuilder.Entity("EducationCenter.Models.Models.ApplicationUser", b =>
@@ -171,7 +171,7 @@ namespace EducationCenter.DataAccess.Migrations
 
                     b.HasIndex("ClassGroupID");
 
-                    b.ToTable("Assessments");
+                    b.ToTable("Assessments", (string)null);
                 });
 
             modelBuilder.Entity("EducationCenter.Models.Models.AssessmentResult", b =>
@@ -211,7 +211,7 @@ namespace EducationCenter.DataAccess.Migrations
 
                     b.HasIndex("StudentID1");
 
-                    b.ToTable("AssessmentResults");
+                    b.ToTable("AssessmentResults", (string)null);
                 });
 
             modelBuilder.Entity("EducationCenter.Models.Models.Attendance", b =>
@@ -258,7 +258,7 @@ namespace EducationCenter.DataAccess.Migrations
 
                     b.HasIndex("StudentID1");
 
-                    b.ToTable("Attendances");
+                    b.ToTable("Attendances", (string)null);
                 });
 
             modelBuilder.Entity("EducationCenter.Models.Models.ClassGroup", b =>
@@ -304,7 +304,7 @@ namespace EducationCenter.DataAccess.Migrations
 
                     b.HasIndex("TeacherId1");
 
-                    b.ToTable("ClassGroups");
+                    b.ToTable("ClassGroups", (string)null);
                 });
 
             modelBuilder.Entity("EducationCenter.Models.Models.Enrollment", b =>
@@ -348,7 +348,7 @@ namespace EducationCenter.DataAccess.Migrations
 
                     b.HasIndex("StudentID1");
 
-                    b.ToTable("Enrollments");
+                    b.ToTable("Enrollments", (string)null);
                 });
 
             modelBuilder.Entity("EducationCenter.Models.Models.Lecture", b =>
@@ -394,7 +394,7 @@ namespace EducationCenter.DataAccess.Migrations
 
                     b.HasIndex("ClassGroupID");
 
-                    b.ToTable("Lectures");
+                    b.ToTable("Lectures", (string)null);
                 });
 
             modelBuilder.Entity("EducationCenter.Models.Models.Notification", b =>
@@ -422,7 +422,7 @@ namespace EducationCenter.DataAccess.Migrations
 
                     b.HasIndex("NotificationRecipientID");
 
-                    b.ToTable("Notifications");
+                    b.ToTable("Notifications", (string)null);
                 });
 
             modelBuilder.Entity("EducationCenter.Models.Models.NotificationRecipient", b =>
@@ -441,7 +441,7 @@ namespace EducationCenter.DataAccess.Migrations
 
                     b.HasKey("NotificationRecipientID");
 
-                    b.ToTable("NotificationRecipients");
+                    b.ToTable("NotificationRecipients", (string)null);
                 });
 
             modelBuilder.Entity("EducationCenter.Models.Models.Payment", b =>
@@ -498,7 +498,7 @@ namespace EducationCenter.DataAccess.Migrations
 
                     b.HasIndex("TeacherId1");
 
-                    b.ToTable("Payments");
+                    b.ToTable("Payments", (string)null);
                 });
 
             modelBuilder.Entity("EducationCenter.Models.Models.PrivateLesson", b =>
@@ -529,7 +529,7 @@ namespace EducationCenter.DataAccess.Migrations
 
                     b.HasIndex("SubjectID");
 
-                    b.ToTable("PrivateLessons");
+                    b.ToTable("PrivateLessons", (string)null);
                 });
 
             modelBuilder.Entity("EducationCenter.Models.Models.PrivateLessonStudent", b =>
@@ -554,7 +554,7 @@ namespace EducationCenter.DataAccess.Migrations
 
                     b.HasIndex("StudentID1");
 
-                    b.ToTable("PrivateLessonStudents");
+                    b.ToTable("PrivateLessonStudents", (string)null);
                 });
 
             modelBuilder.Entity("EducationCenter.Models.Models.PrivateLessonTeacher", b =>
@@ -579,7 +579,7 @@ namespace EducationCenter.DataAccess.Migrations
 
                     b.HasIndex("TeacherId1");
 
-                    b.ToTable("PrivateLessonTeachers");
+                    b.ToTable("PrivateLessonTeachers", (string)null);
                 });
 
             modelBuilder.Entity("EducationCenter.Models.Models.Student", b =>
@@ -614,7 +614,7 @@ namespace EducationCenter.DataAccess.Migrations
 
                     b.HasIndex("AcademicYearID");
 
-                    b.ToTable("Students");
+                    b.ToTable("Students", (string)null);
                 });
 
             modelBuilder.Entity("EducationCenter.Models.Models.Subject", b =>
@@ -631,7 +631,7 @@ namespace EducationCenter.DataAccess.Migrations
 
                     b.HasKey("SubjectID");
 
-                    b.ToTable("Subjects");
+                    b.ToTable("Subjects", (string)null);
                 });
 
             modelBuilder.Entity("EducationCenter.Models.Models.SubjectAcademicYear", b =>
@@ -646,7 +646,7 @@ namespace EducationCenter.DataAccess.Migrations
 
                     b.HasIndex("AcademicYearID");
 
-                    b.ToTable("SubjectAcademicYears");
+                    b.ToTable("SubjectAcademicYears", (string)null);
                 });
 
             modelBuilder.Entity("EducationCenter.Models.Models.Subscription", b =>
@@ -679,7 +679,7 @@ namespace EducationCenter.DataAccess.Migrations
 
                     b.HasIndex("StudentID");
 
-                    b.ToTable("Subscriptions");
+                    b.ToTable("Subscriptions", (string)null);
                 });
 
             modelBuilder.Entity("EducationCenter.Models.Models.Teacher", b =>
@@ -718,7 +718,7 @@ namespace EducationCenter.DataAccess.Migrations
 
                     b.HasIndex("SubjectID1");
 
-                    b.ToTable("Teachers");
+                    b.ToTable("Teachers", (string)null);
                 });
 
             modelBuilder.Entity("EducationCenter.Models.Models.TeacherAcademicYear", b =>
@@ -733,7 +733,7 @@ namespace EducationCenter.DataAccess.Migrations
 
                     b.HasIndex("AcademicYearID");
 
-                    b.ToTable("TeacherAcademicYears");
+                    b.ToTable("TeacherAcademicYears", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

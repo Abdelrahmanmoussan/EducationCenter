@@ -1,4 +1,5 @@
 ﻿using EducationCenter.Models.Enums;
+using EducationCenter.Models.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace EducationCenter.Models.DTOs.Request
 {
-    internal class RegisterRequest
+    public class RegisterRequestDTO
     {
        
 
@@ -41,7 +42,20 @@ namespace EducationCenter.Models.DTOs.Request
         public string? Image { get; set; }
 
         [Required]
-        [MaxLength(20)]
         public RoleStatus RoleStatus { get; set; } // "Student" or "Teacher"
+        [Required]
+        [MaxLength(100)]
+        public string ParentName { get; set; }
+
+        [Required]
+        [Phone]
+        public string ParentPhone { get; set; }
+
+        [Required]
+        [EmailAddress]
+        public string ParentMail { get; set; }
+
+        [Required]
+        public ParentStatus ParentStatus { get; set; }
     }
 }

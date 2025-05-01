@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EducationCenter.Models.DTOs.Request
 {
-    internal class TeacherRequest
+    public class TeacherRequest
     {
 
         [Required]
