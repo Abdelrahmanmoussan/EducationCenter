@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EducationCenter.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -14,7 +15,7 @@ namespace EducationCenter.Models.Models
         public int TeacherId { get; set; }
 
         [Required]
-        public string TeacherStatus { get; set; } // ex: Active, Retired
+        public TeacherStatus TeacherStatus { get; set; } 
 
         [Required]
         public decimal NetAmount { get; set; }
