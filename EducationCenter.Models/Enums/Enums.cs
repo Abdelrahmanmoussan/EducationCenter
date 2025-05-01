@@ -50,4 +50,10 @@ namespace EducationCenter.Models.Enums
         Visa
     }
 
+    public enum TeacherStatus
+    {
+        Online,
+        Offline
+    } 
+
 }
