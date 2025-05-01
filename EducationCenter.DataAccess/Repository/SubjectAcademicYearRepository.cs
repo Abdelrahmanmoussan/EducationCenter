@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace EducationCenter.DataAccess.Repository
 {
-    internal class SubjectAcademicYearRepository : Repository<SubjectAcademicYear> , ISubjectAcademicYearRepository
+    public class SubjectAcademicYearRepository : Repository<SubjectAcademicYear> , ISubjectAcademicYearRepository
     {
         private readonly AppDbContext dbContext;
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EducationCenter.DataAccess.Repository.IRepository
 {
-    internal interface INotificationRecipientRepository : IRepository<NotificationRecipient>
+    public interface INotificationRecipientRepository : IRepository<NotificationRecipient>
     {
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace EducationCenter.DataAccess.Repository
 {
-    internal class EnrollmentRepository : Repository<Enrollment> , IEnrollmentRepository
+    public class EnrollmentRepository : Repository<Enrollment> , IEnrollmentRepository
     {
         private readonly AppDbContext dbContext;
 

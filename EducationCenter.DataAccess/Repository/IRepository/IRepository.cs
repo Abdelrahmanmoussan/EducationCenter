@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EducationCenter.DataAccess.Repository.IRepository
 {
-    internal interface IRepository<T> where T : class
+    public interface IRepository<T> where T : class
     {
 
         Task<T> CreateAsync(T entity, CancellationToken cancellationToken = default);

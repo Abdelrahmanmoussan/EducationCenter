@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EducationCenter.DataAccess.Repository.IRepository
 {
-    internal interface IPaymentRepository : IRepository<Payment>
+    public interface IPaymentRepository : IRepository<Payment>
     {
     }
 }

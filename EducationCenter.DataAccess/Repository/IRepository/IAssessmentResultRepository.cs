@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EducationCenter.DataAccess.Repository.IRepository
 {
-    internal interface IAssessmentResultRepository : IRepository<AssessmentResult>
+    public interface IAssessmentResultRepository : IRepository<AssessmentResult>
     {
     }
 }

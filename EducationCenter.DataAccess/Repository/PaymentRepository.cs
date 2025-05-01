@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace EducationCenter.DataAccess.Repository
 {
-    internal class PaymentRepository : Repository<Payment> , IPaymentRepository
+    public class PaymentRepository : Repository<Payment> , IPaymentRepository
     {
         private readonly AppDbContext dbContext;
 

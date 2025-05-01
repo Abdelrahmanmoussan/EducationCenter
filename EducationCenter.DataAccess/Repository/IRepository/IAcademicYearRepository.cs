@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EducationCenter.DataAccess.Repository.IRepository
 {
-    internal interface IAcademicYearRepository : IRepository<AcademicYear>
+    public interface IAcademicYearRepository : IRepository<AcademicYear>
     {
     }
 }

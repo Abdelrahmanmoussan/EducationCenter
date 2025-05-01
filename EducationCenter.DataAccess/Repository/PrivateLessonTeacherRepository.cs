@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace EducationCenter.DataAccess.Repository
 {
-    internal class PrivateLessonTeacherRepository : Repository<PrivateLessonTeacher>, IPrivateLessonTeacherRepository
+    public class PrivateLessonTeacherRepository : Repository<PrivateLessonTeacher>, IPrivateLessonTeacherRepository
     {
         private readonly AppDbContext dbContext;
 

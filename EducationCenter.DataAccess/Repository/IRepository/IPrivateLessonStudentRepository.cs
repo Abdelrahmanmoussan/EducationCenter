@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EducationCenter.DataAccess.Repository.IRepository
 {
-    internal interface IPrivateLessonStudentRepository : IRepository<PrivateLessonStudent>
+    public interface IPrivateLessonStudentRepository : IRepository<PrivateLessonStudent>
     {
     }
 }

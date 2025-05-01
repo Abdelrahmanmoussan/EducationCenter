@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace EducationCenter.DataAccess.Repository
 {
-    internal class NotificationRepository : Repository<Notification> , INotificationRepository
+    public class NotificationRepository : Repository<Notification> , INotificationRepository
     {
         private readonly AppDbContext dbContext;
 
