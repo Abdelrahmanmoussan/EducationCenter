@@ -1,17 +1,11 @@
-﻿using EducationCenter.DataAccess.Repository;
-using EducationCenter.DataAccess.Repository.IRepository;
+﻿using EducationCenter.DataAccess.Repository.IRepository;
 using EducationCenter.Models.DTOs.Request;
 using EducationCenter.Models.DTOs.Response;
 using EducationCenter.Models.Models;
 using Mapster;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.IdentityModel.Tokens;
- using EducationCenter.Models.DTOs.Response;
-using EducationCenter.Models.Enums;
 
 namespace EducationCenter.Areas.Account
 {
